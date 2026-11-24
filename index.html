@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TrueMirror – Il tuo avatar. I tuoi outfit.</title>
+  <meta name="description" content="TrueMirror è un camerino virtuale 3D inclusivo: crei un avatar del tuo corpo reale e provi outfit completi, con prezzo, marca e negozio più vicino. Progetto GPOI 2026/27 del team Foxtrot.">
+  <link rel="canonical" href="https://peakymate.github.io/truemirror/">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TrueMirror">
+  <meta property="og:title" content="TrueMirror – Il tuo avatar. I tuoi outfit.">
+  <meta property="og:description" content="Camerino virtuale 3D inclusivo per provare outfit completi sul proprio corpo reale.">
+  <meta property="og:url" content="https://peakymate.github.io/truemirror/">
+  <meta property="og:image" content="https://peakymate.github.io/truemirror/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TrueMirror: un avatar 3D fatto di anelli di misura color menta su sfondo nero, con il motto Il tuo avatar. I tuoi outfit.">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/dmsans-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/avatar.js" defer></script>
+  <script src="assets/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="wordmark" href="#top" aria-label="TrueMirror, torna all'inizio" data-i18n-attr="aria-label:wordmarkLabel">True<span>Mirror</span></a>
+      <nav class="nav" aria-label="Sezioni" data-i18n-attr="aria-label:navLabel">
+        <ul>
+          <li><a href="#problema" data-i18n="navProblem">Il problema</a></li>
+          <li><a href="#come" data-i18n="navHow">Come funziona</a></li>
+          <li><a href="#inclusivita" data-i18n="navInclusive">Inclusività</a></li>
+          <li><a href="#mercato" data-i18n="navMarket">Mercato</a></li>
+          <li><a href="#numeri" data-i18n="navNumbers">Numeri</a></li>
+          <li><a href="#roadmap" data-i18n="navRoadmap">Roadmap</a></li>
+          <li><a href="#faq" data-i18n="navFaq">Domande</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button class="lang" type="button" id="lang-toggle" lang="en" aria-label="Switch to English">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title" data-i18n="heroTitle">Il tuo avatar. I tuoi outfit.</h1>
+          <p class="lead" data-i18n="heroLead">Un camerino 3D dove provi outfit completi sul tuo corpo reale, anche quando il tuo corpo non è standard. Prima di comprare vedi prezzo, marca e il negozio più vicino.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#come" data-i18n="heroCta">Scopri come funziona</a>
+            <a class="btn btn-ghost" href="#numeri" data-i18n="heroCta2">Vedi i numeri</a>
+          </div>
+          <p class="hero-note" data-i18n="heroNote">Progetto scolastico GPOI 2026/27 del team Foxtrot. Il prodotto è in fase di progettazione.</p>
+        </div>
+
+        <div class="stage" id="specchio">
+          <div class="mirror">
+            <canvas id="avatar" tabindex="0" role="img" aria-roledescription="avatar 3D" aria-label="Avatar 3D di esempio" data-i18n-attr="aria-roledescription:avatarRole"></canvas>
+            <noscript><p class="noscript">Attiva JavaScript per vedere l’avatar 3D.</p></noscript>
+            <button class="mirror-pause" type="button" id="avatar-pause" aria-pressed="false">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-pause" d="M4.5 3h2.2v10H4.5zM9.3 3h2.2v10H9.3z"/><path class="i-play" d="M5 3l8 5-8 5z"/></svg>
+              <span id="avatar-pause-label" data-i18n="pause">Ferma la rotazione</span>
+            </button>
+          </div>
+          <div class="controls">
+            <p class="hint" data-i18n="hint">Trascina l’avatar o usa le frecce per ruotarlo.</p>
+            <fieldset class="presets">
+              <legend data-i18n="presetLegend">Scegli un corpo</legend>
+              <div class="preset-list" id="preset-list">
+                <label><input type="radio" name="preset" value="standard" checked><span data-i18n="pStandard">Standard</span></label>
+                <label><input type="radio" name="preset" value="gravidanza"><span data-i18n="pPregnancy">Gravidanza</span></label>
+                <label><input type="radio" name="preset" value="arto"><span data-i18n="pLimb">Assenza di arto</span></label>
+                <label><input type="radio" name="preset" value="protesi"><span data-i18n="pProsthesis">Protesi</span></label>
+                <label><input type="radio" name="preset" value="asimmetria"><span data-i18n="pAsym">Asimmetria</span></label>
+              </div>
+            </fieldset>
+            <p class="preset-note" id="preset-note" aria-live="polite"></p>
+            <fieldset class="measures">
+              <legend data-i18n="measLegend">Le tue misure</legend>
+              <div class="slider"><label for="m-height" data-i18n="mHeight">Altezza</label><output id="o-height" for="m-height">168 cm</output><input type="range" id="m-height" data-key="height" min="145" max="200" step="1" value="168"></div>
+              <div class="slider"><label for="m-chest" data-i18n="mChest">Petto</label><output id="o-chest" for="m-chest">92 cm</output><input type="range" id="m-chest" data-key="chest" min="70" max="130" step="1" value="92"></div>
+              <div class="slider"><label for="m-waist" data-i18n="mWaist">Vita</label><output id="o-waist" for="m-waist">74 cm</output><input type="range" id="m-waist" data-key="waist" min="55" max="130" step="1" value="74"></div>
+              <div class="slider"><label for="m-hips" data-i18n="mHips">Fianchi</label><output id="o-hips" for="m-hips">98 cm</output><input type="range" id="m-hips" data-key="hips" min="75" max="135" step="1" value="98"></div>
+            </fieldset>
+            <p class="fine" data-i18n="mirrorFine">Illustrazione con misure di esempio, non il prodotto finito.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section class="section" id="problema" aria-labelledby="problema-title">
+      <div class="wrap">
+        <h2 id="problema-title" data-i18n="probTitle">Ogni reso parte da un dubbio</h2>
+        <blockquote class="voice voice-xl">
+          <p data-i18n="probQuote">“Non so se questo vestito mi starà bene sul mio corpo reale, specialmente se il mio corpo non è standard.”</p>
+        </blockquote>
+        <dl class="facts">
+          <div>
+            <dt data-i18n="fact1Label">spesi in moda online in Italia nel 2026</dt>
+            <dd data-i18n="fact1Value">6,6 mld €</dd>
+          </div>
+          <div>
+            <dt data-i18n="fact2Label">dei capi di abbigliamento comprati online torna indietro</dt>
+            <dd>11–17%</dd>
+          </div>
+          <div>
+            <dt data-i18n="fact3Label">l’anno: stima del costo di gestione di quei resi</dt>
+            <dd data-i18n="fact3Value">110–225 mln €</dd>
+          </div>
+        </dl>
+        <p class="source" data-i18n="probSource">Fonti: Osservatorio eCommerce B2c Netcomm – Politecnico di Milano (2026), Eurostat. Il costo dei resi è una stima dell’analisi di mercato del progetto.</p>
+      </div>
+    </section>
+
+    <!-- COME FUNZIONA -->
+    <section class="section" id="come" aria-labelledby="come-title">
+      <div class="wrap">
+        <h2 id="come-title" data-i18n="howTitle">Come funziona</h2>
+        <p class="section-lead" data-i18n="howLead">Crei l’avatar una volta sola. Poi lo riusi ogni volta che compri.</p>
+        <ol class="steps">
+          <li>
+            <h3 data-i18n="step1Title">Crea il tuo avatar</h3>
+            <p data-i18n="step1Text">Inserisci altezza, spalle, petto, vita, fianchi, busto, braccia e gambe, oppure parti da una foto e poi correggi le misure. La foto viene cancellata subito dopo.</p>
+          </li>
+          <li>
+            <h3 data-i18n="step2Title">Prova outfit completi</h3>
+            <p data-i18n="step2Text">Top, pantaloni e accessori insieme, visti a 360°. Confronti due taglie sullo stesso corpo e ricevi un consiglio di taglia.</p>
+          </li>
+          <li>
+            <h3 data-i18n="step3Title">Scegli dove comprare</h3>
+            <p data-i18n="step3Text">Per ogni capo vedi nome, marca, prezzo, materiale e vestibilità, e il negozio fisico più vicino alla tua città o al tuo CAP.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- INCLUSIVITÀ -->
+    <section class="section" id="inclusivita" aria-labelledby="incl-title">
+      <div class="wrap">
+        <h2 id="incl-title" data-i18n="inclTitle">Pensato per i corpi che i camerini online dimenticano</h2>
+        <p class="section-lead" data-i18n="inclLead">I preset inclusivi sono il punto di partenza, non un’aggiunta. Tra i concorrenti analizzati, nessuno li offre.</p>
+        <ul class="voices">
+          <li>
+            <blockquote class="voice"><p data-i18n="v1Quote">“Fammi capire se questo capo mi andrà bene anche tra due mesi.”</p></blockquote>
+            <p class="who" data-i18n="v1Who">In gravidanza: preset per il primo, il secondo e il terzo trimestre.</p>
+          </li>
+          <li>
+            <blockquote class="voice"><p data-i18n="v2Quote">“Fammi vedere come sto io, non un corpo che non è il mio.”</p></blockquote>
+            <p class="who" data-i18n="v2Who">Con una disabilità o una protesi: preset per assenza di arto superiore o inferiore, protesi e asimmetrie.</p>
+          </li>
+          <li>
+            <blockquote class="voice"><p data-i18n="v3Quote">“Fammi indovinare la taglia senza ordinarne due.”</p></blockquote>
+            <p class="who" data-i18n="v3Who">Chi è stanco dei resi: confronto taglie e consiglio basato sulle misure.</p>
+          </li>
+          <li>
+            <blockquote class="voice"><p data-i18n="v4Quote">“Fammi comprare comodamente da casa senza complicazioni.”</p></blockquote>
+            <p class="who" data-i18n="v4Who">Over 65: in Italia sono 14,82 milioni, il 25,1% della popolazione (ISTAT).</p>
+          </li>
+        </ul>
+        <p><a class="text-link" href="#specchio" data-i18n="inclLink">Prova i preset nello specchio in cima alla pagina</a></p>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section class="section section-privacy" id="privacy" aria-labelledby="privacy-title">
+      <div class="wrap privacy-grid">
+        <div>
+          <h2 id="privacy-title" data-i18n="privTitle">Le misure del tuo corpo restano tue</h2>
+          <p class="section-lead" data-i18n="privLead">TrueMirror tratta dati molto personali. Per questo la privacy è un requisito del progetto fin dall’inizio.</p>
+        </div>
+        <ul class="checks">
+          <li data-i18n="priv1">Le foto usate per creare l’avatar vengono eliminate subito dopo.</li>
+          <li data-i18n="priv2">Raccogliamo solo le misure che servono.</li>
+          <li data-i18n="priv3">Nessuna vendita dei dati del corpo a terzi.</li>
+          <li data-i18n="priv4">Puoi cancellare l’avatar e tutti i tuoi dati quando vuoi.</li>
+          <li data-i18n="priv5">Dati cifrati e profilo tenuto separato dalle misure.</li>
+          <li data-i18n="priv6">Conformità al GDPR, con valutazione d’impatto prima del lancio.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PER CHI -->
+    <section class="section" id="per-chi" aria-labelledby="perchi-title">
+      <div class="wrap">
+        <h2 id="perchi-title" data-i18n="whoTitle">Gratis per chi prova i vestiti. In abbonamento per i negozi.</h2>
+        <div class="audiences">
+          <div class="audience">
+            <h3 data-i18n="b2cTitle">Persone</h3>
+            <p class="price" data-i18n="b2cPrice">Gratis</p>
+            <ul>
+              <li data-i18n="b2c1">Donne in gravidanza e nel post-partum</li>
+              <li data-i18n="b2c2">Persone con disabilità motorie, protesi o esigenze adaptive</li>
+              <li data-i18n="b2c3">Chi compra online ed è stanco dei resi</li>
+              <li data-i18n="b2c4">Chi cerca l’outfit per un’occasione precisa</li>
+            </ul>
+          </div>
+          <div class="audience">
+            <h3 data-i18n="b2bTitle">Negozi e marchi di moda</h3>
+            <p class="price" data-i18n="b2bPrice">100 € al mese per negozio</p>
+            <ul>
+              <li data-i18n="b2b1">200 € di attivazione, una volta sola</li>
+              <li data-i18n="b2b2">Widget per il sito e plugin per Shopify</li>
+              <li data-i18n="b2b3">Obiettivo: resi per taglia e vestibilità ridotti del 15–20%</li>
+              <li data-i18n="b2b4">Un’esperienza inclusiva che i concorrenti non offrono</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MERCATO -->
+    <section class="section" id="mercato" aria-labelledby="mercato-title">
+      <div class="wrap">
+        <h2 id="mercato-title" data-i18n="mktTitle">Uno spazio ancora libero</h2>
+        <p class="section-lead" data-i18n="mktLead">La prova virtuale vale 5–10 miliardi di dollari nel 2026 e cresce del 16–20% l’anno. Nessun servizio però unisce avatar inclusivo, outfit completi e negozio fisico.</p>
+
+        <div class="table-scroll" tabindex="0" role="region" aria-labelledby="cmp-caption">
+          <table class="compare">
+            <caption id="cmp-caption" data-i18n="cmpCaption">Funzioni a confronto con i principali concorrenti (informazioni pubbliche, ottobre 2026)</caption>
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="cmpFeature">Funzione</th>
+                <th scope="col" class="us">TrueMirror</th>
+                <th scope="col">Google</th>
+                <th scope="col">Zalando</th>
+                <th scope="col">3DLOOK</th>
+                <th scope="col">True Fit</th>
+                <th scope="col">AIUTA</th>
+              </tr>
+            </thead>
+            <tbody id="cmp-body"></tbody>
+          </table>
+        </div>
+        <p class="source" data-i18n="cmpNote">“In parte” indica funzioni limitate o non del tutto documentate. Google è il concorrente più forte, ma la prova con la propria foto non è disponibile in Italia: l’analisi stima una finestra di 12–24 mesi.</p>
+      </div>
+    </section>
+
+    <!-- NUMERI -->
+    <section class="section" id="numeri" aria-labelledby="numeri-title">
+      <div class="wrap">
+        <h2 id="numeri-title" data-i18n="numTitle">Un piano che parte da 3.000 €</h2>
+        <p class="section-lead" data-i18n="numLead">Il modello è bootstrapped: i fondatori sviluppano il prodotto e i costi crescono solo insieme ai negozi clienti. Orizzonte di 5 anni dopo l’anno di sviluppo.</p>
+
+        <dl class="kpis">
+          <div><dt data-i18n="k1">Investimento iniziale</dt><dd id="k1v">3.000 €</dd></div>
+          <div><dt data-i18n="k2">Capitale necessario, perdite dei primi 3 anni incluse</dt><dd id="k2v">13.900 €</dd></div>
+          <div><dt data-i18n="k3">ROI a 5 anni</dt><dd id="k3v">205,8%</dd></div>
+          <div><dt data-i18n="k4">VAN al 12%</dt><dd id="k4v">+12.717 €</dd></div>
+          <div><dt data-i18n="k5">TIR</dt><dd id="k5v">≈ 36%</dd></div>
+          <div><dt data-i18n="k6">Recupero dell’investimento</dt><dd data-i18n="k6v">4 anni e 1 mese</dd></div>
+        </dl>
+
+        <div class="charts">
+          <figure class="chart" id="chart-cash">
+            <figcaption>
+              <h3 data-i18n="c1Title">Flusso di cassa cumulato</h3>
+              <p data-i18n="c1Sub">Euro, dall’anno 0 (sviluppo) all’anno 5. Il punto più basso è <span class="nb">−13.900 €</span>, alla fine dell’anno 3.</p>
+            </figcaption>
+            <div class="chart-plot"></div>
+            <details class="chart-table">
+              <summary data-i18n="showTable">Mostra i dati in tabella</summary>
+              <div class="chart-table-body"></div>
+            </details>
+          </figure>
+          <figure class="chart" id="chart-shops">
+            <figcaption>
+              <h3 data-i18n="c2Title">Negozi clienti a fine anno</h3>
+              <p data-i18n="c2Sub">Servono 39 negozi per coprire i costi operativi: il pareggio arriva tra l’anno 3 e l’anno 4.</p>
+            </figcaption>
+            <div class="chart-plot"></div>
+            <details class="chart-table">
+              <summary data-i18n="showTable">Mostra i dati in tabella</summary>
+              <div class="chart-table-body"></div>
+            </details>
+          </figure>
+        </div>
+        <p class="source" data-i18n="numSource">Fonte: studio di fattibilità e documento sugli indicatori di redditività del progetto (v1.1.0). Sono proiezioni, non risultati. Il TIR è ricalcolato dai flussi di cassa del documento.</p>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="wrap">
+        <h2 id="roadmap-title" data-i18n="rmTitle">Roadmap</h2>
+        <p class="section-lead" data-i18n="rmLead">Oggi: analisi di mercato e studio di fattibilità completati (novembre 2026). Il prossimo passo è l’MVP.</p>
+        <ol class="phases">
+          <li class="phase is-next">
+            <h3 data-i18n="ph1Title">Fondamenta (MVP)</h3>
+            <ul>
+              <li data-i18n="ph1a">Avatar da misure con i preset inclusivi</li>
+              <li data-i18n="ph1b">Avatar da foto, versione base</li>
+              <li data-i18n="ph1c">Outfit completi sull’avatar, con prezzo, marca e caratteristiche</li>
+              <li data-i18n="ph1d">Negozio più vicino, account e interfaccia web responsive</li>
+            </ul>
+          </li>
+          <li class="phase">
+            <h3 data-i18n="ph2Title">Integrazione e validazione</h3>
+            <ul>
+              <li data-i18n="ph2a">Widget e plugin per Shopify</li>
+              <li data-i18n="ph2b">Consiglio di taglia automatico</li>
+              <li data-i18n="ph2c">Test con utenti reali, soprattutto in gravidanza e con esigenze adaptive</li>
+            </ul>
+          </li>
+          <li class="phase">
+            <h3 data-i18n="ph3Title">Espansione</h3>
+            <ul>
+              <li data-i18n="ph3a">Qualità 3D e fisica dei tessuti migliori</li>
+              <li data-i18n="ph3b">Dashboard di analisi per i negozi</li>
+              <li data-i18n="ph3c">Più marchi e cataloghi più ampi</li>
+            </ul>
+          </li>
+          <li class="phase">
+            <h3 data-i18n="ph4Title">Scala</h3>
+            <ul>
+              <li data-i18n="ph4a">API pubbliche e nuove integrazioni e-commerce</li>
+              <li data-i18n="ph4b">Più Paesi e più lingue</li>
+              <li data-i18n="ph4c">App mobile nativa, se servirà</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <h2 id="faq-title" data-i18n="faqTitle">Domande frequenti</h2>
+        <div class="faq">
+          <details>
+            <summary data-i18n="q1">Devo pagare per usare TrueMirror?</summary>
+            <p data-i18n="a1">No. Per chi prova i vestiti è gratis. Pagano i negozi che aggiungono TrueMirror al loro sito, con un abbonamento mensile.</p>
+          </details>
+          <details>
+            <summary data-i18n="q2">Che fine fanno le mie foto?</summary>
+            <p data-i18n="a2">Servono solo a creare l’avatar e vengono cancellate subito dopo. Restano salvate solo le misure, che puoi eliminare quando vuoi.</p>
+          </details>
+          <details>
+            <summary data-i18n="q3">Devo installare un’app?</summary>
+            <p data-i18n="a3">No. TrueMirror funziona nel browser, anche dal telefono. Un’app nativa arriverà solo se servirà.</p>
+          </details>
+          <details>
+            <summary data-i18n="q4">Il mio corpo non è “standard”. Funziona lo stesso?</summary>
+            <p data-i18n="a4">È proprio il punto di partenza: preset per gravidanza, assenza di arti, protesi e asimmetrie, più tutte le misure da correggere a mano.</p>
+          </details>
+          <details>
+            <summary data-i18n="q5">Quando sarà disponibile?</summary>
+            <p data-i18n="a5">Il progetto ha completato l’analisi di mercato e lo studio di fattibilità. Il prossimo passo è il prototipo, da testare con utenti reali e con i primi negozi.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <p class="footer-tagline" data-i18n="footTag">Il tuo avatar. I tuoi outfit. Tempo risparmiato, scelte sicure.</p>
+      <p data-i18n="footText">TrueMirror è un progetto scolastico di Gestione progetto e organizzazione d’impresa (GPOI), anno 2026/27, team Foxtrot.</p>
+      <p><a href="https://github.com/peakymate/truemirror" data-i18n="footRepo">Codice del sito su GitHub</a></p>
+    </div>
+  </footer>
+
+  <div class="tooltip" id="tooltip" role="status" hidden></div>
+</body>
+</html>
