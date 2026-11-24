@@ -3,14 +3,14 @@
 
 @font-face {
   font-family: "DM Sans";
-  src: url("fonts/dmsans-var.woff") format("woff");
+  src: url("dmsans-var.woff") format("woff");
   font-weight: 300 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Lora";
-  src: url("fonts/lora-italic-var.woff") format("woff");
+  src: url("lora-italic-var.woff") format("woff");
   font-weight: 400 700;
   font-style: italic;
   font-display: swap;

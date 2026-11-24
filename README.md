@@ -7,9 +7,9 @@ Sito di presentazione di **TrueMirror**, camerino virtuale 3D inclusivo (progett
 ## Contenuto
 
 - `index.html`: pagina unica, in italiano e inglese (pulsante IT/EN).
-- `assets/avatar.js`: avatar 3D disegnato su canvas, senza librerie. Si ruota trascinando o con le frecce, ha i preset inclusivi (gravidanza, assenza di arto, protesi, asimmetria) e le misure regolabili.
-- `assets/main.js`: lingua, tabella dei concorrenti, grafici.
-- `assets/style.css`, `assets/fonts/`: stile e font self-hosted (licenza SIL OFL), nessuna richiesta a servizi esterni.
+- `avatar.js`: avatar 3D disegnato su canvas, senza librerie. Si ruota trascinando o con le frecce, ha i preset inclusivi (gravidanza, assenza di arto, protesi, asimmetria) e le misure regolabili.
+- `main.js`: lingua, tabella dei concorrenti, grafici.
+- `style.css`, `*.woff`: stile e font self-hosted (licenza SIL OFL), nessuna richiesta a servizi esterni.
 
 ## Pubblicazione
 

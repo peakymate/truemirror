@@ -249,7 +249,7 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* The mirror: 3D avatar (assets/avatar.js)                            */
+  /* The mirror: 3D avatar (avatar.js)                            */
   /* ------------------------------------------------------------------ */
   const canvas = document.getElementById("avatar");
   const avatar = window.TrueMirrorAvatar && canvas
